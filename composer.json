@@ -1,0 +1,19 @@
+{
+    "name": "sinevia/php-library-router",
+    "description": "PHP Library Router",
+    "type": "library",
+    "keywords": ["router", "library", "php", "sinevia"],    
+    "homepage": "http://github.com/sinevia/php-library-router",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Milan Lesichkov",
+            "email": "lesichkovm@gmail.com",
+            "homepage": "http://lesichkov.co.uk",
+            "role": "Lead Developer"
+        }
+    ],
+    "autoload": {
+        "files": ["src/router.php"]
+    }
+}

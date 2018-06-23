@@ -58,11 +58,11 @@ die((new Plugins\Router())->setDatabase($db)->run()));
 
 ## Example Routes
 
-|    Id   | ActionName  |   Middleware  |  Response  |  Response  |
-| ------- | ----------- | --------------|  --------- |  --------- |
-| 1       | /           |               |  home      |  will excute the function home() |
-| 2       | /hello/:string   |  verifyUser,setLastLogin   |  hello     |  will excute the function verifyUser,setLastLogin then hello($name) |
-| 3       | /admin   |               |  App\Admin@dashboard     |  will excute the method dashboard from class Admin in namespace App |
+|  Id |  Status  |   ActionName   |    Middleware   |  Response  |  Response  |
+| --- | -------- | -------------- |  -------------- |  --------- |
+|  1  |  Active  | /              |                 |  home      |  will excute the function home() |
+|  2  | Inactive | /hello/:string |  verifyUser,setLastLogin   |  hello     |  will excute the function verifyUser,setLastLogin then hello($name) |
+|  3  |  Active  | /admin         |                 |  App\Admin@dashboard     |  will excute the method dashboard from class Admin in namespace App |
 
 
 

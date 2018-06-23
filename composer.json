@@ -14,6 +14,6 @@
         }
     ],
     "autoload": {
-        "files": ["src/router.php","RouterPlugin.php"]
+        "files": ["src/Router.php"]
     }
 }

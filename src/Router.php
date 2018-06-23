@@ -1,3 +1,5 @@
+<?php
+
 namespace Plugins;
 
 class Router {

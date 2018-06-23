@@ -36,6 +36,7 @@ Status - string / enum (Active|Inactive)
 ActionName - string
 Middleware - string
 Response - string
+Memo - text
 CreatedAt - datetime
 UpdatedAt - datetime
 DeletedAt - datetime
@@ -57,8 +58,11 @@ die((new Plugins\Router())->setDatabase($db)->run()));
 
 ## Example Routes
 
-|    Id   | ActionName  |   Middleware  |  Response  |
-| ------- | ----------- | --------------|  --------- |
+|    Id   | ActionName  |   Middleware  |  Response  |  Response  |
+| ------- | ----------- | --------------|  --------- |  --------- |
+| 1       | /           |               |  home      |  will excute the function home() |
+| 1       | /hello/:string   |               |  hello     |  will excute the function hello($name) |
+
 
 
 ## Human Friendly Action Names ##

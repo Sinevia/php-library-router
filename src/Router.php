@@ -48,11 +48,13 @@ class Router {
         }
         
         // DEBUG: $this->getDatabase()->debug = true;
-
-        $this->actions = $this->getDatabase()
+        
+        $actions = $this->getDatabase()
                 ->table($this->databaseTable)
                 ->orderBy('ActionName', 'DESC')
                 ->select();
+
+        $this->actions = is_array($actions) ? $actions : [];
         
         return $this->actions;
     }

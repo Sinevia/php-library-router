@@ -155,8 +155,14 @@ class Router {
     }
 
     public function install() {
-        $this->getDatabase()->table($this->databaseTable)
-                ->column('Id', 'BIGINT')
+        if ($this->getDatabase()->table($this->databaseTable)->exists()) {
+            return true;
+        }
+
+        // $this->getDatabase()->debug = true;
+
+        $result = $this->getDatabase()->table($this->databaseTable)
+                ->column('Id', 'STRING', 'PRIMARY KEY')
                 ->column('Status', 'STRING')
                 ->column('ActionName', 'STRING')
                 ->column('Middleware', 'STRING')
@@ -165,6 +171,12 @@ class Router {
                 ->column('CreatedAt', 'DATETIME')
                 ->column('UpdatedAt', 'DATETIME')
                 ->create();
+        
+        if ($result !== false) {
+            return true;
+        }
+        
+        return false;
     }
 
     public function executeFunction($functionName, $arguments = []) {

@@ -46,17 +46,22 @@ class Router {
         if (is_null($this->actions) == false) {
             return $this->actions;
         }
-        
+
         // DEBUG: $this->getDatabase()->debug = true;
-        
+
         $actions = $this->getDatabase()
                 ->table($this->databaseTable)
                 ->orderBy('ActionName', 'DESC')
                 ->select();
 
         $this->actions = is_array($actions) ? $actions : [];
-        
+
         return $this->actions;
+    }
+
+    function setActions($actions) {
+        $this->actions = $actions;
+        return $this;
     }
 
     /**
@@ -79,7 +84,7 @@ class Router {
         }
 
         // 1. Uri
-        $uri = $_SERVER['REQUEST_URI'];
+        $uri = $_SERVER['REQUEST_URI'] ?? '';
 
         // 2. Remove normal query string
         $uri = (strpos($uri, '?') !== false) ? substr($uri, 0, strpos($uri, '?')) : $uri;
@@ -155,14 +160,8 @@ class Router {
     }
 
     public function install() {
-        if ($this->getDatabase()->table($this->databaseTable)->exists()) {
-            return true;
-        }
-
-        // $this->getDatabase()->debug = true;
-
-        $result = $this->getDatabase()->table($this->databaseTable)
-                ->column('Id', 'STRING', 'PRIMARY KEY')
+        $this->getDatabase()->table($this->databaseTable)
+                ->column('Id', 'BIGINT')
                 ->column('Status', 'STRING')
                 ->column('ActionName', 'STRING')
                 ->column('Middleware', 'STRING')
@@ -171,12 +170,6 @@ class Router {
                 ->column('CreatedAt', 'DATETIME')
                 ->column('UpdatedAt', 'DATETIME')
                 ->create();
-        
-        if ($result !== false) {
-            return true;
-        }
-        
-        return false;
     }
 
     public function executeFunction($functionName, $arguments = []) {

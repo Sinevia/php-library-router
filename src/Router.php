@@ -163,7 +163,9 @@ class Router {
         if ($this->getDatabase()->table($this->databaseTable)->exists()) {
             return true;
         }
-        // $this->getDatabase()->debug = true;
+        
+        // DEBUG: $this->getDatabase()->debug = true;
+        
         $result = $this->getDatabase()->table($this->databaseTable)
                 ->column('Id', 'STRING', 'PRIMARY KEY')
                 ->column('Id', 'BIGINT')

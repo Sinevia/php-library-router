@@ -253,6 +253,14 @@ class Router {
             if (is_string($response)) {
                 return $response;
             }
+            
+            if (is_numeric($response)) {
+                return $response;
+            }
+            
+            if (is_bool($response)) {
+                return $response;
+            }
 
             return $response->toJson();
         }

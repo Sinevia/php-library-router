@@ -127,9 +127,11 @@ class Router {
 
         // DEBUG: var_dump($actionName);
 
-        $actionsWithPattern = array_filter($actions, function($action) {
+        $actionsWithPatternUnordered = array_filter($actions, function($action) {
             return strpos($action['ActionName'], ':') !== false;
         });
+
+        $actionsWithPattern = array_values($actionsWithPatternUnordered);
 
         $actionNamesWithPatterns = array_column($actionsWithPattern, 'ActionName');
 
